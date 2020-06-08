@@ -1,0 +1,80 @@
+﻿@model List<GroupManager.Models.ResourceMoveValidate>
+@{
+    ViewBag.Title = "Generate";
+}
+<script src="~/Content/FileSaver.js"></script> @*could be downloaded from https://github.com/eligrey/FileSaver.js/blob/master/src/FileSaver.js*@
+<script>
+    function fnExcelReport(id, name) {
+        var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
+        tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
+        tab_text = tab_text + '<x: Name>Test Sheet</x: Name>';
+        tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions ></x: ExcelWorksheet > ';
+        tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+        tab_text = tab_text + "<table border='1px' style='color:black'>";
+
+
+        var exportTable = $('#' + id).clone();
+        exportTable.find('th').last().remove();
+        exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
+        exportTable.find('a').each(function (index, elem) { $(elem).remove(); });
+
+        tab_text = tab_text + exportTable.html();
+        tab_text = tab_text + '</table></body></html>';
+        var fileName = "ResourceMoveValidationReport" + '.xls';
+
+        //Save the file
+        var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
+        window.saveAs(blob, fileName);
+    }
+</script>
+
+
+<h2>Resource Moving Validation Report</h2>
+<button style="float:right;" class="btn btn-primary" onclick="javascript: fnExcelReport('dataTable', 'data')">Export To Excel</button>
+<br />
+<br />
+<br />
+<div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-info">
+                    <h4 class="card-title">Migration Resource info</h4>
+                    <p class="card-category">Resource move to CSP validation report</p>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table class="table" id="dataTable">
+                            <thead class="text-primary">
+                                <tr>
+                                    <td>Resource Name</td>
+                                    <td>Resource Type</td>
+                                    <td>Resource Group</td>
+                                    <td>Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (GroupManager.Models.ResourceMoveValidate user in Model)
+                                {
+                                    <tr>
+                                        <td>@user.ResourceName</td>
+                                        <td>@user.ResourceType</td>
+                                        <td>@user.ResourceGroup</td>
+                                        <td>@user.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .none {
+        display: none;
+    }
+</style>

@@ -1,0 +1,33 @@
+﻿@model GroupManager.Models.Subscription
+@{
+    ViewBag.Title = "ResourceMapping";
+}
+
+<h2>Resource Mapping</h2>
+
+@using (Html.BeginForm("Generate", "Groups", FormMethod.Post, new { id = "signupform" }))
+{
+    @*@Html.AntiForgeryToken()*@
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(m => m.manangebytenantId, new SelectList(ViewBag.tenantlist, "TenantId", "TenantDisplayName", ViewBag.SelectPartner), new { @class = "form-control" })*@
+                @Html.DropDownListFor(m => m.subscriptionId, (SelectList)ViewBag.sublist, "--select subscription--", new { @class = "form-control" })
+             </div>
+        </div>
+
+      
+
+        <div class="form-group">
+            <div class="confirm-offer">
+                <input type="submit" value="Generate report" class="btn btn-success" onclick="return validateData();" />
+                @*<input type="button" value="Reset" class="reset btn btn-danger" onclick="resetForm();" />*@
+
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,88 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.logo1 {
+    padding-left: 20%;
+    padding-top: 10%;
+}
+    /* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+    .dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 340px;
+}
+
+#wpf-loader-two {
+    /*padding-bottom:20%;
+    padding-top:20%;
+    padding-left:50%;
+    padding-right:50%;*/
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    
+    z-index: 99999;
+}
+    #wpf-loader-two .spinner-grow text-info .sr-only span {
+        color: #fff;
+        display: inline-block;
+        margin-top: 42%;
+    }
+.callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    h4
+
+{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+code {
+    border-radius: 3px;
+}
+
+& + .bs-callout {
+    margin-top: -5px;
+}
+
+}
+
+@each $name,$color in (default,#777),(primary,#428bca),(success,#5cb85c),(danger,#d9534f),(warning,#f0ad4e),(info,#5bc0de), (bdc,#29527a) {
+    .callout-# {
+        $name
+    }
+
+{
+    border-left-color: $color;
+    h4
+
+{
+    color: $color;
+}
+
+}
+}

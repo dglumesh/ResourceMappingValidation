@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "mspOfferName": {
+      "value": "rhipe Managed Services"
+    },
+    "mspOfferDescription": {
+      "value": "rhipe Managed Services - Cost Management"
+    },
+    "managedByTenantId": {
+      "value": "7fc434d1-2994-4e7e-be30-258bfa059538"
+    },
+    "authorizations": {
+      "value": [
+        {
+          "principalId": "f56b89e3-67e6-4da4-84d8-d8a74f5cdc93",
+          "principalIdDisplayName": "rhipe admins",
+          "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+        }
+      ]
+    }
+  }
+}

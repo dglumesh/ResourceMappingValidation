@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mspOfferName": {
+            "value": "rhipe Managed Services"
+        },
+        "mspOfferDescription": {
+            "value": "rhipe Managed Services"
+        },
+        "managedByTenantId": {
+            "value": "894e1f06-8c51-4ba8-97eb-becd91eb7cae"
+        },
+        "authorizations": {
+            "value": [
+                {
+                    "principalId": "814438e3-38da-4aae-ad3f-fb6fd7456ea7",
+                    "principalIdDisplayName": "rhipe admins",
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+                }               
+            ]
+        }
+    }
+}
